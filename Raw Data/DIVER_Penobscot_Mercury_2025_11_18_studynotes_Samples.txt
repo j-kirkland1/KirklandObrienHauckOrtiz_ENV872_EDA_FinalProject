@@ -1,0 +1,2429 @@
+--------------------------------------------------
+320010--PR Hg DEP 2015-2016 Remediation
+--------------------------------------------------
+****DATA SOURCE****
+Source: Penobscot_TED_Export.accdb, compiled by AMEC.
+
+****STUDY PURPOSE****
+The purpose of this study is: Remediation Sampling
+
+****DATA USE QUALIFICATION****
+The data is labeled as intentionally not validated, the validator is unknown.
+
+There are 4 samples in this study for which a broader range of chemicals were measured, which had units reported on a liquid basis (e.g., mg/L).  The source data indicated that these samples were sediments, with no explanation of the units on a liquid basis.  In DIVER, these samples were coded as porewater matrix, although this an assumption. These results should be used with caution.
+
+****DATA TYPES****
+This study includes results for sediment chemistry.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude.  Coordinates were included as reported in the source data.  The reliability of the coordinates was not specified.
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the Field ID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates and sample depth information were provided for all samples.  
+
+In instances where the same chemical was measured by two different laboratories for the same STATIONID/SAMPLEID, a Labrep of 2 was assigned to one of the results.
+
+There were FDUP samples that did not have a matching parent sample ID and were excluded from the database.
+
+****CHEMISTRY****
+Detection limits were not available for the entire data set.  When possible, the Result value for non-detects reflects the Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead and noted. 
+
+Result values of 0 for non-detects were replaced with the Method Detection Limit.
+
+The Sample Quantitation Limit reported in the source data was used to populate the Reporting limit.
+
+The source data did not have measurement basis reported.  AMEC compiled the database that was used as the source of this data and they indicated that sediment chemistry results are reported on a dry weight basis and tissue chemistry results are reported on a wet weight basis. Given the historical data, there may be some cases where this is not true.  For the DIVER database, it was assumed that all sediment chemistry results were provided on a DW basis.
+
+The results were reported with two different unit and result combinations in the source data. The Report_Unit and Report_Result fields from the source data were used in the DIVER database. 
+
+Note that there are results reported with a value that is less that the DL which have not been flagged with a J or U qualifier - these results should be used with caution (3 results for Arsenic).
+
+The source data reported the Analyte 'Nimax' for 5 samples. It could not be determined what this analyte represented and the results were excluded from the main database but are available if these are required by the user.
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results.  
+
+There were no sums calculated for this study.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data for some of the qualifiers. Others were marked as "Not defined".
+
+Laboratory Qualifiers and Final Qualifiers were captured as they were reported in the source database.
+
+****OTHER****
+The modified tech task name is captured in the Project Name field.
+
+--------------------------------------------------
+320006--PR 2017 Hg Study Phase 3
+--------------------------------------------------
+****DATA SOURCE****
+Sources: Penobscot_TED_Export.accdb (original) and Penobscot_TED_Export_121521.mdb (update), compiled by AMEC. 
+
+The following individual task orders, identified in the tech_task_name of the AMEC databases were incorporated into StudyID 06 (PR 2017 Hg Study Phase 3):
+WO 2A-051 : 2017 Leachability Study
+WO 2A-02 Waste Characterization
+WO 2A-053 : 2017 Leachability Study
+WO 4A-020 : Analyses of WO 003A Samples
+WO 4A-030 : 2017 Work Order 30 Marsh Pltfrm Sed
+WO 4A-040 : 2017 Sediment Monitoring
+WO 4A-040 : 2017 Surface Water
+WO 4A-050 : 2017 Biota Monitoring
+WO 4A-050 : 2017 Biota Monitoring Additional
+WO 4A-060 : 2017 Mobile Sediment Pool Char
+WO 4A-070 : 2017 Work Order 70
+WO 4A-080 : 2017 Work Order 80
+
+
+
+****STUDY PURPOSE****
+The purpose of this study is a Court ordered (2003) study of the mercury in the Penobscot River. 
+
+****DATA USE QUALIFICATION****
+Update 09/23/2022: 
+It was noted that there are samples that appear to be core samples that have different dates at the varying depths that make up a core sample.  This apparent inconsistency was introduced in the source data; the sampling dates were retained in DIVER as they were reported in the source data, although samples collected from the same Study/Station with a consistent depth profile would appear to be core samples that were actually collected on the same date.  
+
+Different levels of data validation were reported; these are indicated in the DVLevel field of the database.  Results with DVLevel = VALSUMM were identified as Chemist Review in the source data.
+
+Results associated with the following tech_task_name from the original data source are identified in PDB smpmaster.RelSmpGrp with an entry of '2017 Leachability Study'.
+WO 2A-02 Waste Characterization
+WO 2A-051 : 2017 Leachability Study
+WO 2A-053 : 2017 Leachability Study
+
+****DATA TYPES****
+This study includes results for sediment, tissue, water, leachate, and floc samples.
+
+There are results from this study that are stored in the Lab Results/Field Observation category of DIVER.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude.  The reliability of the coordinates was not specified.
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.
+
+Some stations provided had null coordinates. These stations were retained in the database and given a lat/long values of 0,0.
+
+The Station identifier 'QC' reported in the source data was changed to 'BAIT' in DIVER.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the Field ID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates and sample depth information were provided for all samples.  
+
+Total and dissolved (filtered) water fractions measured from the same whole water sample are differentiated by adding an F suffix to the SAMPLEID for the dissolved fraction.
+
+For samples with and unknown Upper Collection Depth = -9 and unknown Lower Collection Depth (entered as -9) these samples are categorized as floc samples collected between the water column and the sediment and were given a matrix of "FC".
+
+There is one sample that had a reported fraction of "S". The data provider provided the definition of this sample: "SPLP sample Synthetic Precipitation Leaching Procedure". This sample was given a matrix of "LE".
+
+There were FDUP samples that did not have a matching parent sample ID and were excluded from the database.
+
+****CHEMISTRY****
+Detection limits were not available for the entire data set.  When possible, the Result value for non-detects reflects the Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead and noted. 
+
+Result values of 0 for non-detects were replaced with the Method Detection Limit. 
+
+Results from the updated AMEC database (Penobscot_TED_Export_121521.mdb) included laboratory replicate results that were assigned distinct Sample IDs (e.g., OV-02_052417_SW_10_R1, OV-02_052417_SW_10_R2, OV-02_052417_SW_10_R3) and were associated with an averaged result from the original AMEC database (Penobscot_TED_Export.mdb).  The averaged result was removed from DIVER, the SampleID's were standardized to remove the lab replicate suffix (e.g., OV-02_052417_SW_10), and the LabRep field was used to identify the lab replicates.    
+
+The Sample Quantitation Limit reported in the source data was used to populate the Reporting limit.
+
+From original grain size results reported in terms of sieve size, converted to the equivalent grain size classifications corresponding to the Wentworth scale (e.g. %Fines). Excluded results reported with "Sieve Size #200" and retained "Sieve Size 230" (PCT_FINES), since they are in the same size classification. 
+
+Assumed results reported with Sieve Size were measured in percent passing.
+
+The source data did not have measurement basis reported.  AMEC compiled the database that was used as the source of this data and they indicated that sediment chemistry results are reported on a dry weight basis and tissue chemistry results are reported on a wet weight basis. Given the historical data, there may be some cases where this is not true.  For the DIVER database, it was assumed that all tissue chemistry results were provided on a WW basis and that all sediment and floc chemistry results were reported on a DW basis.
+
+The results were reported with two different unit and result combinations in the source data. The Report_Unit and Report_Result fields from the source data were used in the DIVER database. 
+
+There were 3 negative results for Bulk Density - these were included in the database but the user is cautioned that these results may not be correct.  Note that the source data reported 'Bulk Density' and this was assigned the chemcode DENSITY_D, making the assumption that this is dry bulk density.  There were 91 results that had the Analyte reported as Percent Solids, Method reported as BULK DENSITY, and units of PCT - these results were coded as chemcode DENSITY_D, QUALCODE NSR and LabRep 2 - these results should be used with caution as it is not clear what these measurements represent. 
+
+The analyte reported as Percent Solids and Analyical Method D422 or ASTM D2974-C was coded as Water content, based on some results >100.
+
+Note that some of the entries in Date Analyzed are suspect, as they indicate analysis occurred prior to collection date.
+
+Note that there are results reported with a value that is less that the DL which have not been flagged with a J or U qualifier - these results should be used with caution (65 results).
+
+There were stations/samples that reported Analyte Names 'Total Organic Carbon (1)' and 'Total Organic Carbon (2)' - both were assiged chemcode TOC and the 'Total Organic Carbon (2)' results were assigned Lab Rep 2.
+
+For Station OV-02 there were 4 samples that reported Analyte Names 'Total Suspended Solids' (Method 2540D) and 'Suspended Sediment' (Method D3977) - both were assiged chemcode TSS and the 'Suspended Sediment' results were assigned Lab Rep 2.
+
+In instances where the same chemical was measured by two different laboratories for the same STATIONID/SAMPLEID, a Labrep of A1, A2, B1, B2, etc. was assigned to one of the results.
+
+
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+=== Grain Size ===
+Results for %silt and %clay were summed to generate records for the chemcode = PCT_FINES.  A sum is only calculated if there are two or more results for %silt and/or %clay.
+
+Percent fines reported in the source data have been assigned chemcode PCT_FINESR.
+
+
+=== PAH Sums === 
+Polycyclic aromatic hydrocarbon (PAH) sums reported in the source data have been assigned chemcodes of LPAHR, HPAHR, and PAH_SUMR.
+
+Total low molecular weight PAHs (chemcode = LPAH) were calculated for samples with two or more of the following chemicals reported:
+  acenaphthene
+  anthracene
+  biphenyl
+  2,6-dimethylnaphthalene
+  fluorene
+  1-methylnaphthene
+  2-methylnapthene
+  1-methylphenanthrene
+  phenanthrene
+  naphthalene
+  
+CHEMCODES = ACENAPTHEN, ANTHRACENE, BIPHENYL, METNAP26_2, FLUORENE, METHNAP_1, METHNAP_2, METPHENAN1, PHENANTHRN, NAPTHALENE
+
+Total high molecular weight PAHs (chemcode = HPAH) were calculated for samples with two or more of the following chemicals reported:  
+  benz(a)anthracene
+  benzo(a)pyrene
+  benzoâ‚¬pyrene
+  chrysene
+  dibenz(a,h)anthracene
+  fluoranthene
+  perylene
+  pyrene
+  
+CHEMCODES = BAA, BAP, BEP, CHRYSENE, BANTH2, FLUORANTHN, PERYLENE, PYRENE
+
+Total PAHs (chemcode = TOTAL_PAH) were calculated as the sum of the LPAH and HPAH chemicals as listed above.
+
+=== PCB Sums === 
+Total of PCB congeners were calculated and assigned the chemcode PCB_SUM_P.  Since there were more than 17 congeners, but less than 30 congeners reported, only the congeners on the NOAA Status and Trends (NST) Congener shortlist of 18 congeners were summed, and the resulting value was multiplied by 2.  If the detection limit of any one of the non-detected compounds was greater than or equal to the sum (prior to multiplication by 2), than the highest non-detect value was reported with a UCALC qualifier.  
+
+The congener sum was also reported with the chemcode PCB_SUM.
+
+=== Chlordane Sums === 
+Chlordane sums reported in the source data have been assigned the chemcode CHLDN_SUMR.
+
+The sums of Chlordane pesticides (CHLDNE_SUM) were calculated for samples with two or more of the following chemicals reported: alpha-Chlordane, gamma-Chlordane, beta-Chlordane, cis- & trans-Chlordane, Oxychlordane, cis-Nonachlor, and trans-Nonachlor (CHEMCODES = CHLORDAN_A,  CHLORDAN_G, CHLORDAN_B, CHLDNE_C_T, CHLDNE_OXY, NONACL_CIS, NONACHL_TR).
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data for some of the qualifiers. Others were marked as "Not defined".
+
+Laboratory Qualifiers and Final Qualifiers were captured as they were reported in the source database.
+
+Qualfiier definitions for "USCS Visual Classification" can be found at: https://www.globalsecurity.org/military/library/policy/army/fm/5-472/apb.pdf
+
+****OTHER****
+The modified tech task name is captured in the Project Name field.
+
+Study references added based on reports available at the following site:   
+https://www.penobscotmercurystudy.com/information-repository/phase-iii-engineering-study
+
+
+--------------------------------------------------
+320003--PR Sed, Sed PW, Soil & Tiss sampling 1995-2012
+--------------------------------------------------
+****DATA SOURCE****
+Sources: Penobscot_TED_Export.accdb (original) and Penobscot_TED_Export_121521.mdb (update), compiled by AMEC.  ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+
+****STUDY PURPOSE****
+The purpose of this study is: Sampling event
+
+****DATA USE QUALIFICATION****
+The following CHEMCODES-UNITS were flagged with an NSR Qualifier (non-standard reporting units) in the QUALCODE field:  AMMONIA-uM, DO-PCT, IRON_3-umol/g, ORTHO_PHOS-uM, TOC-PCT.
+
+For some of the results in this study, the data validation indicated on the source data was DEP REVIEW.   This description has been standardized to DEP the DVLevel field of the chemistry tables.  For some of the results in this study, the data is labeled as intentionally not validated. The validator is unknown.
+
+When tissue chemistry results were reported on both a dry weight and wet weight basis, the results on a dry weight basis were not included in the database.
+
+****DATA TYPES****
+This study includes results for sediment, water, and tissue chemistry.
+
+There are results from this study that are stored in the Lab Results/Field Observation category of DIVER.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude.  The reliability of the coordinates was not specified.
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.
+
+Some stations provided had null coordinates. These stations were retained in the database and given a lat/long values of 0,0.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the Field ID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates and sample depth information were provided for all samples.  
+
+In instances where the same chemical was measured by two different laboratories for the same STATIONID/SAMPLEID, a Labrep of 2 was assigned to one of the results.
+
+Total and dissolved (filtered) water fractions measured from the same whole water sample are differentiated by adding an F suffix to the SAMPLEID for the dissolved fraction.
+
+For samples with Upper Collection Depth = 0, the Lower Collection Depth is unknown (entered as -9) and marked as Grab samples, these samples are categorized as surficial samples (therefore assuming the sample represents the biologically active zone).
+
+There were FDUP samples that did not have a matching parent sample ID and were excluded from the database.
+
+Suffixes have been added to the SampleID code to create an association of 2 or more samples from one or more collected field samples.  For example, porewater  samples are coded with the sediment sample code + a PW suffix (e.g., S001 sediment sample and the associated porewater sample is S001PW).  Samples that are associated with each other can also be identified in the RelSmpGrp field. (The RelSmpGrp field is not included in the legacy QM database format)
+
+****CHEMISTRY****
+Detection limits were not available for the entire data set.  When possible, the Result value for non-detects reflects the Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead and noted. 
+
+The Sample Quantitation Limit reported in the source data was used to populate the Reporting limit.
+
+Result values of 0 for non-detects were replaced with the Method Detection Limit.
+
+
+Results from the updated AMEC database (Penobscot_TED_Export_121521.mdb) included laboratory replicate results that were assigned distinct Sample IDs (e.g., OV-02_052417_SW_10_R1, OV-02_052417_SW_10_R2, OV-02_052417_SW_10_R3) and were associated with an averaged result from the original AMEC database (Penobscot_TED_Export.mdb).  The averaged result was removed from DIVER, the SampleID's were standardized to remove the lab replicate suffix (e.g., OV-02_052417_SW_10), and the LabRep field was used to identify the lab replicates.    
+
+The source data did not have measurement basis reported.  AMEC compiled the database that was used as the source of this data and they indicated that sediment chemistry results are reported on a dry weight basis and tissue chemistry results are reported on a wet weight basis. Given the historical data, there may be some cases where this is not true.  For the DIVER database, it was assumed that all sediment chemistry results were provided on a DW basis and all tissue chemistry results were provided on a WW basis.
+
+The results were reported with two different unit and result combinations in the source data. The Report_Unit and Report_Result fields from the source data were used in the DIVER database. 
+
+Units for 58 TOC results were reported in units of MG/KG, which were treated as units of  PCT based on the result ranges (2.7 - 6.65).
+
+Units for 38 TOC results were reported in units of PCT (analytical method = LLOYDKAHN) which were treated as units of  MG/KG based on the result ranges (2700 - 143000).
+
+Note that some of the entries in Date Analyzed are suspect, as they indicate analysis occurred prior to collection date.
+
+Note that there are results reported with a value that is less that the DL which have not been flagged with a J or U qualifier - these results should be used with caution (73 results).
+
+There were 25 stations/samples that reported Analyte Names 'methyl mercury' and 'MeHg - digest' - both were assiged chemcode METHYL_HG and the 'MeHg - digest' results were assigned Lab Rep 2. This applies to the following stations:  BH-1, BST-01, BST-02, BST-03, BST-04, ME-1, ME-2, ME-3, ME-4, MW-1, MW-2, MW-3, MW-4, SMT-02, SMT-03, SMT-04, W-17-1, W-17-2, W-17-3, W-17-4.
+
+There were 20 stations/samples that reported Analyte Names 'Beryllium-7' and 'Be-7 (pCi/g) Penobscot Only' - both were assiged chemcode RN_BE7 and the 'Be-7 (pCi/g) Penobscot Only' results were assigned Lab Rep 2.
+
+There were 150 stations/samples that reported Analyte Names 'Cesium-137' and 'Cs-137 (pCi/g) Penobscot Only' - both were assiged chemcode RN_CS137 and the 'Cs-137 (pCi/g) Penobscot Only' results were assigned Lab Rep 2.
+
+Chemical code PCT_FINESR was applied to the reported parameter #200 SIEVE.
+
+The Station IDs with 'SEEP' were reported as liquid samples, but had units reported on a solid basis - assumed these samples were sediment matrix.
+
+The analyte reported as Percent Moisture was coded as Water content, based on some results >100 and the analytical method D2216 (16 results).
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+=== Grain Size ===
+Results for %silt and %clay were summed to generate records for the chemcode = PCT_FINES.  A sum is only calculated if there are two or more results for %silt and/or %clay.
+
+
+=== PAH Sums === 
+Polycyclic aromatic hydrocarbon (PAH) sums reported in the source data have been assigned chemcodes of LPAHR, HPAHR, and PAH_SUMR.
+
+Total low molecular weight PAHs (chemcode = LPAH) were calculated for samples with two or more of the following chemicals reported:
+  acenaphthene
+  anthracene
+  biphenyl
+  2,6-dimethylnaphthalene
+  fluorene
+  1-methylnaphthene
+  2-methylnapthene
+  1-methylphenanthrene
+  phenanthrene
+  naphthalene
+  
+CHEMCODES = ACENAPTHEN, ANTHRACENE, BIPHENYL, METNAP26_2, FLUORENE, METHNAP_1, METHNAP_2, METPHENAN1, PHENANTHRN, NAPTHALENE
+
+Total high molecular weight PAHs (chemcode = HPAH) were calculated for samples with two or more of the following chemicals reported:  
+  benz(a)anthracene
+  benzo(a)pyrene
+  benzo(e)pyrene
+  chrysene
+  dibenz(a,h)anthracene
+  fluoranthene
+  perylene
+  pyrene
+  
+CHEMCODES = BAA, BAP, BEP, CHRYSENE, BANTH2, FLUORANTHN, PERYLENE, PYRENE
+
+Total PAHs (chemcode = TOTAL_PAH) were calculated as the sum of the LPAH and HPAH chemicals as listed above.
+
+
+=== PCB Sums === 
+PCB Congener sums reported in the source data have been assigned the chemcode PCB_SUMR.
+
+Total Aroclors were calculated and assigned the chemcode PCB_SUM_A.  Sums are reported for samples with two or more of the following chemicals reported: Aroclor 1016, Aroclor 1221, Aroclor 1232, Aroclor 1242, Aroclor 1248, Aroclor 1254, Aroclor 1260, Aroclor 1262, Aroclor 1268 (CHEMCODES = AR_1016, AR_1221, AR_1232, AR_1242, AR_1248, AR_1254, AR_1260, AR_1262, AR_1268).  
+
+The Aroclor sum was also reported with the chemcode PCB_SUM.
+
+=== Chlordane Sums === 
+The sums of Chlordane pesticides (CHLDNE_SUM) were calculated for samples with two or more of the following chemicals reported: alpha-Chlordane, gamma-Chlordane, beta-Chlordane, cis- & trans-Chlordane, Oxychlordane, cis-Nonachlor, and trans-Nonachlor (CHEMCODES = CHLORDAN_A,  CHLORDAN_G, CHLORDAN_B, CHLDNE_C_T, CHLDNE_OXY, NONACL_CIS, NONACHL_TR).
+
+
+=== Simultaneously Extracted Metals ===
+The sum of simultaneously extracted metals (SEM) reported in the source data they have been assigned the chemcode SEM_SUMR.
+
+Total SEM is reported in units of umol/g.  The sums of SEM (SEM_SUM) were calculated using molar concentrations for samples with two or more of the following chemicals reported:   SE_CADMIUM, SE_COPPER, SE_LEAD, LE_NICKEL, SE_SILVER, and SE_ZINC.  Silver is included at one-half its molar concentration.  SEM minus acid volatile sulfate (AVS) expressed in umol/g was also calculated and assigned the chemcode = SEM_M_AVS.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data for some of the qualifiers. Others were marked as "Not defined".
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The modified tech task name is captured in the Project Name field.
+
+
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320002--PR Hg Sed & Tissue sampling 2002-2015
+--------------------------------------------------
+****DATA SOURCE****
+Source: Penobscot_TED_Export.accdb, compiled by AMEC.
+
+When information was available on the original source files, this information is captured in the chemedd.ValNote field.
+
+****STUDY PURPOSE****
+The purpose of this study is: Sampling event
+
+****DATA USE QUALIFICATION****
+Update 5/23/2024: Review of associated records in study PR BRI Bird and Mammal Tissue 1994-2017 (3200:84) and PR Hg Sed & Tissue sampling 2002-2015 (3200:02) revealed that bird, crustecean and invertebrate tissue chemistry records in both studies were found to have similar sample values that only differ due to precision of coordinates, precision of result concentration values or specificity of tissue type designations. These records came from two different data provider submissions and were not detected previously due to differing source sample ID conventions and the variance in the result and coordinate values. 
+
+Matching crustacean tissue chemistry records were removed from Study 02. These records were found to have similar sample values to PR EGAD 2014 studies. 
+
+Matching invertebrate and bird tissue chemistry were retained in Study 02 because the lab information was more complete. The matching records were removed from Study 84 but retained in the backend excluded chemistry (chemxtedd) table to avoid data loss. Some records in Study 84 were found on review to not be duplicates but additional chemistry records for the same individual samples found in Study 02. These records were transfered to Study 02 in order to keep all chemistry records from the same organism together in the same study.
+
+Sample information such as Sex, Lifestage and Weight were available in the matched samples in Study 84 and were updated in Study 02. Study 02 stations with null (0/0) coordiantes were updated with coordinates from matched stations previously in Study 84. Some Study 02 stations with null (0/0) coordinates were removed after match to stations previously in Study 84 because they consisted of multiple samples taken at the same location and were given a common stationID following database conventions.
+
+The data is labeled as intentionally not validated,Stage_2B, and Stage 3.  The source data reported a validation level of 'INV' for some results - this was assumed to be not validated.The validator is unknown.
+
+****DATA TYPES****
+This study includes results for sediment and tissue chemistry.
+
+There are results from this study that are stored in the Lab Results/Field Observation category of DIVER.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude.  The reliability of the coordinates was not specified.
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.
+
+Some stations provided had null coordinates. These stations were retained in the database and given a lat/long values of 0,0.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the Field ID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates and sample depth information were provided for all samples.  
+
+In instances where the same chemical was measured by two different laboratories for the same STATIONID/SAMPLEID, a Labrep of 2 was assigned to one of the results.
+
+There were FDUP samples that did not have a matching parent sample ID and were excluded from the database.
+
+Green Crab samples with Age reported as 5 were reported in the source data as '4-6'.
+
+****CHEMISTRY****
+Detection limits were not available for the entire data set.  When possible, the Result value for non-detects reflects the Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead and noted. 
+
+The Sample Quantitation Limit reported in the source data was used to populate the Reporting limit.
+
+Result values of 0 for non-detects were replaced with the Method Detection Limit.
+
+The source data did not have measurement basis reported.  AMEC compiled the database that was used as the source of this data and they indicated that sediment chemistry results are reported on a dry weight basis and tissue chemistry results are reported on a wet weight basis. Given the historical data, there may be some cases where this is not true. For the DIVER database, it was assumed that all tissue chemistry results were provided on a WW basis.
+
+The results were reported with two different unit and result combinations in the source data. The Report_Unit and Report_Result fields from the source data were used in the DIVER database. 
+
+Note that some of the entries in Date Analyzed are suspect, as they indicate analysis occurred prior to collection date.
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results.  
+
+There were no sums calculated for this study.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data for some of the qualifiers. Others were marked as "Not defined".
+
+Laboratory Qualifiers and Final Qualifiers were captured as they were reported in the source database.
+
+****OTHER****
+The modified tech task name is captured in the Project Name field.
+
+--------------------------------------------------
+320008--PR Hg WHOI 2011 Sed Sampling
+--------------------------------------------------
+****DATA SOURCE****
+Source: Penobscot_TED_Export.accdb, compiled by AMEC.
+
+When information was available on the original source files, this information is captured in the chemedd.ValNote field.
+
+****STUDY PURPOSE****
+The purpose of this study is: Sampling event
+
+****DATA USE QUALIFICATION****
+The data is labeled as intentionally not validated, the validator is unknown.
+
+****DATA TYPES****
+This study includes results for sediment chemistry.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude.  Coordinates were included as reported in the source data.  The reliability of the coordinates was not specified.
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the Field ID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates and sample depth information were provided for all samples.  
+
+In instances where the same chemical was measured by two different laboratories for the same STATIONID/SAMPLEID, a Labrep of 2 was assigned to one of the results.
+
+For samples with Upper Collection Depth = 0, the Lower Collection Depth is unknown (entered as -9) and marked as Grab samples, these samples are categorized as surficial samples (therefore assuming the sample represents the biologically active zone).
+
+There were FDUP samples that did not have a matching parent sample ID and were excluded from the database.
+
+****CHEMISTRY****
+Detection limits were not available for the entire data set.  When possible, the Result value for non-detects reflects the Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead and noted. 
+
+Result values of 0 for non-detects were replaced with the Method Detection Limit.
+
+The Sample Quantitation Limit reported in the source data was used to populate the Reporting limit.
+
+The source data did not have measurement basis reported.  AMEC compiled the database that was used as the source of this data and they indicated that sediment chemistry results are reported on a dry weight basis and tissue chemistry results are reported on a wet weight basis. Given the historical data, there may be some cases where this is not true.  For the DIVER database, it was assumed that all sediment chemistry results were provided on a DW basis.
+
+The results were reported with two different unit and result combinations in the source data. The Report_Unit and Report_Result fields from the source data were used in the DIVER database. 
+
+Note that there are results reported with a value that is less that the DL which have not been flagged with a J or U qualifier - these results should be used with caution (3 results for Methyl Mercury).
+
+There were stations/samples that reported Analyte Names 'Beryllium-7' and 'Be-7 (pCi/g) Penobscot Only' - both were assiged chemcode RN_BE7 and the 'Be-7 (pCi/g) Penobscot Only' results were assigned Lab Rep 2.
+
+There were stations/samples that reported Analyte Names 'Cesium-137' and 'Cs-137 (pCi/g) Penobscot Only' - both were assiged chemcode RN_CS137 and the 'Cs-137 (pCi/g) Penobscot Only' results were assigned Lab Rep 2.
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results.  
+
+There were no sums calculated for this study.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data for some of the qualifiers. Others were marked as "Not defined".
+
+Laboratory Qualifiers and Final Qualifiers were captured as they were reported in the source database.
+
+****OTHER****
+The modified tech task name is captured in the Project Name field.
+
+--------------------------------------------------
+320052--PR EGAD Holtrachem Sed & Soil 2015
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+For some of the results in this study, the data validation indicated on the source data was DEP REVIEW.   This description has been standardized to DEP the DVLevel field of the chemistry tables.
+
+For some of the results in this study, the data validation indicated on the source data was EPA Tier 2, or Tier 2 modified.
+
+****DATA TYPES****
+This study includes results for sediment, sediment pore water and soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Some of the station identifiers in the source data were truncated for inclusion in DIVER.  The Station identifiers reported in the source data are stored in the ExStnID field.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+When only a single sample depth was reported for grab samples, assumed the top depth was 0. Note that in many cases the collection method of Grab does not agree with the depth (e.g., 58 feet).
+
+This study includes sediment or soil samples analyzed by the chemical labs that are composites from multiple individual samples.   Information about the the individual component samples were not provided in the source data. 
+
+Measurement results for water data did not specify whether these were based on the whole or dissolved fraction, it was assumed that the results are based on the whole water sample the measbasis field was coded with Ã¢â‚¬ËœToÃ¢â‚¬â„¢ to designate it as total.
+
+Source data reported Data Analyzed before Sample Collection Date for certain samples.   Results were reported in DIVER as they were reported in the source data.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead. 
+
+Wet weight-to-dry weight conversions were required for sediment data. 
+
+Rejected results are included in the database and not modified;  the associated QUALCODE includes R.
+
+There were some samples that measured a suite of mercury fractions (cinnabar fraction, FRACTION GEOLOGICALLY BOUND/BOUND IN SILICA MATRIX, ORGANO-COMPLEXED FRACTION, stomach acid fraction, strongly complexed fraction, volatile elemental fraction, water soluble fraction).  For most of these samples, the sample date/time was reported inconsistently in the source data (unique sample date/time for individual parameters and/or lab replicates).  For these samples, it was assume that the date/time information reported in the source data was in error, and the data/time was adjusted to be consistent for all parameters and lab reps, and consistent with other samples from the core.
+
+****CALCULATED RESULTS****
+The source data included results for the following calculated totals, which were excluded from the main database: PCBS
+
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+
+=== PAH Sums === 
+Polycyclic aromatic hydrocarbon (PAH) sums reported in the source data have been assigned chemcodes of LPAHR, HPAHR, and PAH_SUMR.
+
+Total low molecular weight PAHs (chemcode = LPAH) were calculated for samples with two or more of the following chemicals reported:
+  acenaphthene
+  anthracene
+  biphenyl
+  2,6-dimethylnaphthalene
+  fluorene
+  1-methylnaphthene
+  2-methylnapthene
+  1-methylphenanthrene
+  phenanthrene
+  naphthalene
+  
+CHEMCODES = ACENAPTHEN, ANTHRACENE, BIPHENYL, METNAP26_2, FLUORENE, METHNAP_1, METHNAP_2, METPHENAN1, PHENANTHRN, NAPTHALENE
+
+Total high molecular weight PAHs (chemcode = HPAH) were calculated for samples with two or more of the following chemicals reported:  
+  benz(a)anthracene
+  benzo(a)pyrene
+  benzo[e]pyrene
+  chrysene
+  dibenz(a,h)anthracene
+  fluoranthene
+  perylene
+  pyrene
+  
+CHEMCODES = BAA, BAP, BEP, CHRYSENE, BANTH2, FLUORANTHN, PERYLENE, PYRENE
+
+Total PAHs (chemcode = TOTAL_PAH) were calculated as the sum of the LPAH and HPAH chemicals as listed above.
+
+
+=== PCB Sums === 
+
+Total Aroclors were calculated and assigned the chemcode PCB_SUM_A.  Sums are reported for samples with two or more of the following chemicals reported: Aroclor 1016, Aroclor 1221, Aroclor 1232, Aroclor 1242, Aroclor 1248, Aroclor 1254, Aroclor 1260, Aroclor 1262, Aroclor 1268 (CHEMCODES = AR_1016, AR_1221, AR_1232, AR_1242, AR_1248, AR_1254, AR_1260, AR_1262, AR_1268).  
+
+The Aroclor sum was also reported with the chemcode PCB_SUM.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320014--PR EGAD Holtrachem Sed & Soil 1994
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+****DATA TYPES****
+This study includes results for  sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320056--PR EGAD Holtrachem Sed & Soil 2018
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+For some of the results in this study, the data validation indicated on the source data was EPA Tier 2.
+
+****DATA TYPES****
+This study includes results for sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were not reported in the source data.
+
+The samples were collected at Holtrachem Mfg company. 
+
+Some of the station identifiers in the source data were truncated for inclusion in DIVER.  The Station identifiers reported in the source data are stored in the ExStnID field.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+When only a single sample depth was reported for grab samples, assumed the top depth was 0. Note that in many cases the collection method of Grab does not agree with the depth (e.g., 58 feet).
+
+Collection depths in the source data were reported with upper collection depths that were greater than the lower collection depth.  Results were reported in DIVER as they were reported in the source data.
+
+Source data reported Data Analyzed before Sample Collection Date for certain samples.   Results were reported in DIVER as they were reported in the source data.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320012--PR Hg EPA 2000-2006 Sed
+--------------------------------------------------
+****DATA SOURCE****
+Source: Penobscot_TED_Export.accdb, compiled by AMEC.
+
+****STUDY PURPOSE****
+The purpose of this study is: Sampling event
+
+****DATA USE QUALIFICATION****
+The data is labeled as intentionally not validated, the validator is unknown.
+
+****DATA TYPES****
+This study includes results for sediment chemistry.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude.  Coordinates were included as reported in the source data.  The reliability of the coordinates was not specified.
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the Field ID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates and sample depth information were provided for all samples.  
+
+In instances where the same chemical was measured by two different laboratories for the same STATIONID/SAMPLEID, a Labrep of 2 was assigned to one of the results.
+
+There were FDUP samples that did not have a matching parent sample ID and were excluded from the database.
+
+****CHEMISTRY****
+Detection limits were not available for the entire data set.  When possible, the Result value for non-detects reflects the Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead and noted. 
+
+Result values of 0 for non-detects were replaced with the Method Detection Limit.
+
+The Sample Quantitation Limit reported in the source data was used to populate the Reporting limit.
+
+The source data did not have measurement basis reported.  AMEC compiled the database that was used as the source of this data and they indicated that sediment chemistry results are reported on a dry weight basis and tissue chemistry results are reported on a wet weight basis. Given the historical data, there may be some cases where this is not true.  For the DIVER database, it was assumed that all sediment chemistry results were provided on a DW basis.
+
+The results were reported with two different unit and result combinations in the source data. The Report_Unit and Report_Result fields from the source data were used in the DIVER database.
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results.  
+
+There were no sums calculated for this study.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data for some of the qualifiers. Others were marked as "Not defined".
+
+Laboratory Qualifiers and Final Qualifiers were captured as they were reported in the source database.
+
+****OTHER****
+The modified tech task name is captured in the Project Name field.
+
+--------------------------------------------------
+320021--PR EGAD Holtrachem Sed, Soil & Tiss 2000
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+For some of the results in this study, the data validation indicated on the source data was DEP REVIEW.   This description has been standardized to DEP the DVLevel field of the chemistry tables.
+
+When tissue chemistry results were reported on both a dry weight and wet weight basis, the results on a dry weight basis were not included in the database.
+
+****DATA TYPES****
+This study includes results for tissue, sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+This study includes sediment or soil samples analyzed by the chemical labs that are composites from multiple individual samples.   Information about the the individual component samples were not provided in the source data.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+The source data reported the parameter 'DRYNESS' for 9 soil samples with SS- prefixes.  This parameter was coded as SOLIDS_T (% solids) in DIVER.
+
+Tissue results reported with measurement basis as NR were assumed to be on a wet weight basis and were not converted.
+
+****CALCULATED RESULTS****
+The source data included results for the following calculated totals, which were excluded from the main database: PCBS
+
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+=== Grain Size ===
+Results for %silt and %clay were summed to generate records for the chemcode = PCT_FINES.  A sum is only calculated if there are two or more results for %silt and/or %clay.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320063--PR Sed & Tissue Fall sampling 2020
+--------------------------------------------------
+****DATA SOURCE****
+Source: Penobscot_TED_Export.accdb, compiled by AMEC.
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether data validation was conducted.
+
+****DATA TYPES****
+This study includes results for tissue and sediment chemistry.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude (ME_State_NAD1983).  Coordinates were included as reported in the source data.  The reliability of the coordinates was not specified.
+
+Some of the station identifiers in the source data were truncated for inclusion in DIVER.  
+
+The Station identifiers reported in the source data are stored in the ExStnID field.
+
+The Station identifier 'QC' reported in the source data was changed to 'BAIT' in DIVER.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.  
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.  
+
+
+Sampling depths were provided for all samples.
+
+****CHEMISTRY****
+Measurement basis was not reported in the source data.  It was assumed that all sediment and soil chemistry results were provided on a DW basis, and all tissue chemistry results were reported on a wet weight basis. 
+
+The value included in the 'SQL_text' field in the source data was used to populate the Reporting Limit field in DIVER.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifier definitions were not provided; so generic descriptions have been included.
+
+--------------------------------------------------
+320020--PR EGAD Holtrachem Soil 1999
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+****DATA TYPES****
+This study includes results for  soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+Upper and Lower Collection depths were not reported in the source data, and therefore samples are categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+The source data reported the parameter 'DRYNESS' for 9 soil samples with SS- prefixes.  This parameter was coded as SOLIDS_T (% solids) in DIVER.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320026--PR EGAD Long Cove Stockton Harbor Sed & Tiss 2005
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+When tissue chemistry results were reported on both a dry weight and wet weight basis, the results on a dry weight basis were not included in the database.
+
+****DATA TYPES****
+This study includes results for tissue and sediment chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+Upper and Lower Collection depths were not reported in the source data, and therefore samples are categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+****CALCULATED RESULTS****
+The source data included results for the following calculated totals, which were excluded from the main database: PCB TOTAL TEQ (ND=0) ,PCB TOTAL TEQ (ND=DL) ,TOTAL PAH19-D ,TOTAL PAH19-H ,TOTAL PAH19-O ,TOTAL PAH24-D ,TOTAL PAH24-H ,TOTAL PAH24-O ,TOTAL PAH40-D ,TOTAL PAH40-H ,TOTAL PAH40-O ,TOTAL PAH-H ,TOTAL PAH-O ,TOTAL PCB-H ,TOTAL PCB-O ,TOTAL PESTICIDES21-H ,TOTAL PESTICIDES21-O
+
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+
+=== PAH Sums === 
+Polycyclic aromatic hydrocarbon (PAH) sums reported in the source data have been assigned chemcodes of LPAHR, HPAHR, and PAH_SUMR.
+
+Total low molecular weight PAHs (chemcode = LPAH) were calculated for samples with two or more of the following chemicals reported:
+  acenaphthene
+  anthracene
+  biphenyl
+  2,6-dimethylnaphthalene
+  fluorene
+  1-methylnaphthene
+  2-methylnapthene
+  1-methylphenanthrene
+  phenanthrene
+  naphthalene
+  
+CHEMCODES = ACENAPTHEN, ANTHRACENE, BIPHENYL, METNAP26_2, FLUORENE, METHNAP_1, METHNAP_2, METPHENAN1, PHENANTHRN, NAPTHALENE
+
+Total high molecular weight PAHs (chemcode = HPAH) were calculated for samples with two or more of the following chemicals reported:  
+  benz(a)anthracene
+  benzo(a)pyrene
+  benzo[e]pyrene
+  chrysene
+  dibenz(a,h)anthracene
+  fluoranthene
+  perylene
+  pyrene
+  
+CHEMCODES = BAA, BAP, BEP, CHRYSENE, BANTH2, FLUORANTHN, PERYLENE, PYRENE
+
+Total PAHs (chemcode = TOTAL_PAH) were calculated as the sum of the LPAH and HPAH chemicals as listed above.
+
+
+=== PCB Sums === 
+PCB sums reported in the source data that could not be identified as being the result of Aroclor, congener, or homolog sums have been assigned the chemcode PCB_SUMR. 
+
+Total of PCB congeners were calculated and assigned the chemcode PCB_SUM_P.  The total is the sum of congeners, with 30 or more congeners reported for each sample.
+
+The congener sum was also reported with the chemcode PCB_SUM.
+
+=== DDT Sums === 
+The sum of paired o,p'/p,p' isomers of DDT and its derivatives reported in the source data  have been assigned chemcodes of DDT_SUMR, DDE_SUMR, and DDD_SUMR.  The sums of all DDT isomers have been assigned the chemcode  DDT_TOTALR.
+
+The sums of the DDT pesticides (DDT_TOTAL) were calculated using a minimum of 4 isomers.  The following pairs were summed when results for both isomers were reported for the sample:  p,p'-DDT and o,p'-DDT (chemcode = DDT_SUM);  p,p'-DDD and o,p'-DDD (chemcode = DDD_SUM);  p,p'-DDE and o,p'-DDE  (chemcode = DDE_SUM).
+
+
+=== Chlordane Sums === 
+Chlordane sums reported in the source data have been assigned the chemcode CHLDN_SUMR.
+
+The sums of Chlordane pesticides (CHLDNE_SUM) were calculated for samples with two or more of the following chemicals reported: alpha-Chlordane, gamma-Chlordane, beta-Chlordane, cis- & trans-Chlordane, Oxychlordane, cis-Nonachlor, and trans-Nonachlor (CHEMCODES = CHLORDAN_A,  CHLORDAN_G, CHLORDAN_B, CHLDNE_C_T, CHLDNE_OXY, NONACL_CIS, NONACHL_TR).
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320053--PR EGAD Holtrachem Sed & Soil 2016
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+For some of the results in this study, the data validation indicated on the source data was EPA Tier 2.
+
+****DATA TYPES****
+This study includes results for sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified. Many stations did not have coordinates reported in the source data. 
+
+Some of the station identifiers in the source data were truncated for inclusion in DIVER.  The Station identifiers reported in the source data are stored in the ExStnID field.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When only a single sample depth was reported for grab samples, assumed the top depth was 0. Note that in many cases the collection method of Grab does not agree with the depth (e.g., 58 feet).
+
+Collection depths in the source data were reported with upper collection depths that were greater than the lower collection depth.  Results were reported in DIVER as they were reported in the source data.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead. 
+
+Wet weight-to-dry weight conversions were required for sediment data. 
+
+Rejected results are included in the database and not modified;  the associated QUALCODE includes R.
+
+****CALCULATED RESULTS****
+The source data included results for the following calculated totals, which were excluded from the main database: PCBS
+
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+
+=== PCB Sums === 
+
+Total Aroclors were calculated and assigned the chemcode PCB_SUM_A.  Sums are reported for samples with two or more of the following chemicals reported: Aroclor 1016, Aroclor 1221, Aroclor 1232, Aroclor 1242, Aroclor 1248, Aroclor 1254, Aroclor 1260, Aroclor 1262, Aroclor 1268 (CHEMCODES = AR_1016, AR_1221, AR_1232, AR_1242, AR_1248, AR_1254, AR_1260, AR_1262, AR_1268).  
+
+The Aroclor sum was also reported with the chemcode PCB_SUM.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320058--PR EGAD Holtrachem Sed & Soil 2020
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The data validation indicated on the source data was EPA Tier 2.
+
+****DATA TYPES****
+This study includes results for sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were not reported in the source data.
+
+The samples were collected at Holtrachem Mfg company. 
+
+Some of the station identifiers in the source data were truncated for inclusion in DIVER.  The Station identifiers reported in the source data are stored in the ExStnID field.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+When only a single sample depth was reported for grab samples, assumed the top depth was 0. Note that in many cases the collection method of Grab does not agree with the depth (e.g., 58 feet).
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead. 
+
+Rejected results are included in the database and not modified;  the associated QUALCODE includes R.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320007--PR Hg Yeager 2009 Sed Study
+--------------------------------------------------
+****DATA SOURCE****
+Source: Penobscot_TED_Export.accdb, compiled by AMEC.
+
+When information was available on the original source files, this information is captured in the chemedd.ValNote field.
+
+****STUDY PURPOSE****
+The purpose of this study is: Sampling event
+
+****DATA USE QUALIFICATION****
+The data is labeled as intentionally not validated, the validator is unknown.
+
+****DATA TYPES****
+This study includes results for sediment chemistry.
+
+There are results from this study that are stored in the Lab Results/Field Observation category of DIVER.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude.  Coordinates were included as reported in the source data.  The reliability of the coordinates was not specified.
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the Field ID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates and sample depth information were provided for all samples.  
+
+In instances where the same chemical was measured by two different laboratories for the same STATIONID/SAMPLEID, a Labrep of 2 was assigned to one of the results.
+
+There were FDUP samples that did not have a matching parent sample ID and were excluded from the database.
+
+****CHEMISTRY****
+Detection limits were not available for the entire data set.  When possible, the Result value for non-detects reflects the Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead and noted. 
+
+Result values of 0 for non-detects were replaced with the Method Detection Limit.
+
+The Sample Quantitation Limit reported in the source data was used to populate the Reporting limit.
+
+The source data did not have measurement basis reported.  AMEC compiled the database that was used as the source of this data and they indicated that sediment chemistry results are reported on a dry weight basis and tissue chemistry results are reported on a wet weight basis. Given the historical data, there may be some cases where this is not true.  For the DIVER database, it was assumed that all sediment chemistry results were provided on a DW basis.
+
+The results were reported with two different unit and result combinations in the source data. I used Report_Unit and Report_Result for the chem results in a_edd.
+
+There were stations/samples that reported Analyte Names 'Beryllium-7' and 'Be-7 (pCi/g) Penobscot Only' - both were assiged chemcode RN_BE7 and the 'Be-7 (pCi/g) Penobscot Only' results were assigned Lab Rep 2.
+
+There were stations/samples that reported Analyte Names 'Cesium-137' and 'Cs-137 (pCi/g) Penobscot Only' - both were assiged chemcode RN_CS137 and the 'Cs-137 (pCi/g) Penobscot Only' results were assigned Lab Rep 2.
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+=== Grain Size ===
+Results for %silt and %clay were summed to generate records for the chemcode = PCT_FINES.  A sum is only calculated if there are two or more results for %silt and/or %clay.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data for some of the qualifiers. Others were marked as "Not defined".
+
+Laboratory Qualifiers and Final Qualifiers were captured as they were reported in the source database.
+
+****OTHER****
+The modified tech task name is captured in the Project Name field.
+
+--------------------------------------------------
+320001--PR Hg EPA 1970-1971 Sed Sampling
+--------------------------------------------------
+****DATA SOURCE****
+Source: Penobscot_TED_Export.accdb, compiled by AMEC.
+
+****STUDY PURPOSE****
+The purpose of this study is: Sampling event
+
+****DATA USE QUALIFICATION****
+The data is labeled as intentionally not validated, the validator is unknown.
+
+****DATA TYPES****
+This study includes results for sediment chemistry.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude.  Coordinates were included as reported in the source data.  The reliability of the coordinates was not specified.
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.
+
+Some stations provided had null coordinates. These stations were retained in the database and given a lat/long values of 0,0.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the Field ID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates and sample depth information were provided for all samples.  
+
+In instances where the same chemical was measured by two different laboratories for the same STATIONID/SAMPLEID, a Labrep of 2 was assigned to one of the results.
+
+For samples with Upper Collection Depth = 0, the Lower Collection Depth is unknown (entered as -9) and marked as Grab samples, these samples are categorized as surficial samples (therefore assuming the sample represents the biologically active zone).
+
+There were FDUP samples that did not have a matching parent sample ID and were excluded from the database.
+
+****CHEMISTRY****
+Detection limits were not available for the entire data set.  When possible, the Result value for non-detects reflects the Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+The Sample Quantitation Limit reported in the source data was used to populate the Reporting limit.
+
+Result values of 0 for non-detects were replaced with the Method Detection Limit.
+
+The source data did not have measurement basis reported.  AMEC compiled the database that was used as the source of this data and they indicated that sediment chemistry results are reported on a dry weight basis and tissue chemistry results are reported on a wet weight basis. Given the historical data, there may be some cases where this is not true.  In the DIVER database, it was assumed that all sediment chemistry results were provided on a DW basis.
+
+The results were reported with two different unit and result combinations in the source data. The Report_Unit and Report_Result fields from the source data were used in the DIVER database. 
+
+The source data reported 'Mercury - Wet Weight' and 'Mercury - Dry Weight' for all samples.  The wet weight results were excluded from the main database but are available if these are required by the user.
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results.  
+
+There were no sums calculated for this study.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data for some of the qualifiers. Others were marked as "Not defined".
+
+Laboratory Qualifiers and Final Qualifiers were captured as they were reported in the source database.
+
+****OTHER****
+The modified tech task name is captured in the Project Name field.
+
+--------------------------------------------------
+320022--PR EGAD Holtrachem Sed & Soil 2001
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+For some of the results in this study, the data validation indicated on the source data was DEP REVIEW.   This description has been standardized to DEP the DVLevel field of the chemistry tables.
+
+****DATA TYPES****
+This study includes results for  sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+Upper and Lower Collection depths were not reported in the source data, and therefore samples are categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+The source data reported the parameter 'DRYNESS' for 9 soil samples with SS- prefixes.  This parameter was coded as SOLIDS_T (% solids) in DIVER.
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+=== PAH Sums === 
+Polycyclic aromatic hydrocarbon (PAH) sums reported in the source data have been assigned chemcodes of LPAHR, HPAHR, and PAH_SUMR.
+
+Total low molecular weight PAHs (chemcode = LPAH) were calculated for samples with two or more of the following chemicals reported:
+  acenaphthene
+  anthracene
+  biphenyl
+  2,6-dimethylnaphthalene
+  fluorene
+  1-methylnaphthene
+  2-methylnapthene
+  1-methylphenanthrene
+  phenanthrene
+  naphthalene
+  
+CHEMCODES = ACENAPTHEN, ANTHRACENE, BIPHENYL, METNAP26_2, FLUORENE, METHNAP_1, METHNAP_2, METPHENAN1, PHENANTHRN, NAPTHALENE
+
+Total high molecular weight PAHs (chemcode = HPAH) were calculated for samples with two or more of the following chemicals reported:  
+  benz(a)anthracene
+  benzo(a)pyrene
+  benzo[e]pyrene
+  chrysene
+  dibenz(a,h)anthracene
+  fluoranthene
+  perylene
+  pyrene
+  
+CHEMCODES = BAA, BAP, BEP, CHRYSENE, BANTH2, FLUORANTHN, PERYLENE, PYRENE
+
+Total PAHs (chemcode = TOTAL_PAH) were calculated as the sum of the LPAH and HPAH chemicals as listed above.
+
+
+=== PCB Sums === 
+
+Total Aroclors were calculated and assigned the chemcode PCB_SUM_A.  Sums are reported for samples with two or more of the following chemicals reported: Aroclor 1016, Aroclor 1221, Aroclor 1232, Aroclor 1242, Aroclor 1248, Aroclor 1254, Aroclor 1260, Aroclor 1262, Aroclor 1268 (CHEMCODES = AR_1016, AR_1221, AR_1232, AR_1242, AR_1248, AR_1254, AR_1260, AR_1262, AR_1268).  
+
+The Aroclor sum was also reported with the chemcode PCB_SUM.
+
+=== Chlordane Sums === 
+Chlordane sums reported in the source data have been assigned the chemcode CHLDN_SUMR.
+
+The sums of Chlordane pesticides (CHLDNE_SUM) were calculated for samples with two or more of the following chemicals reported: alpha-Chlordane, gamma-Chlordane, beta-Chlordane, cis- & trans-Chlordane, Oxychlordane, cis-Nonachlor, and trans-Nonachlor (CHEMCODES = CHLORDAN_A,  CHLORDAN_G, CHLORDAN_B, CHLDNE_C_T, CHLDNE_OXY, NONACL_CIS, NONACHL_TR).
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320040--PR EGAD Holtrachem Soil 2011
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+****DATA TYPES****
+This study includes results for  soil chemistry.
+
+****STATIONS****
+Station coordinates were not reported in the source data.
+
+The samples were collected at Holtrachem Mfg company. 
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+Upper and Lower Collection depths were not reported in the source data, and therefore samples are categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320024--PR EGAD Fort Point Cove Sed & Tiss 2005
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+When tissue chemistry results were reported on both a dry weight and wet weight basis, the results on a dry weight basis were not included in the database.
+
+****DATA TYPES****
+This study includes results for tissue and sediment chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+Upper and Lower Collection depths were not reported in the source data, and therefore samples are categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+****CALCULATED RESULTS****
+The source data included results for the following calculated totals, which were excluded from the main database: PCB TOTAL TEQ (ND=0) ,PCB TOTAL TEQ (ND=DL) ,TOTAL PAH19-D ,TOTAL PAH19-H ,TOTAL PAH19-O ,TOTAL PAH24-D ,TOTAL PAH24-H ,TOTAL PAH24-O ,TOTAL PAH40-D ,TOTAL PAH40-H ,TOTAL PAH40-O ,TOTAL PAH-H ,TOTAL PAH-O ,TOTAL PCB-H ,TOTAL PCB-O , ,TOTAL PESTICIDES21-H ,TOTAL PESTICIDES21-O
+
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+
+=== PAH Sums === 
+Polycyclic aromatic hydrocarbon (PAH) sums reported in the source data have been assigned chemcodes of LPAHR, HPAHR, and PAH_SUMR.
+
+Total low molecular weight PAHs (chemcode = LPAH) were calculated for samples with two or more of the following chemicals reported:
+  acenaphthene
+  anthracene
+  biphenyl
+  2,6-dimethylnaphthalene
+  fluorene
+  1-methylnaphthene
+  2-methylnapthene
+  1-methylphenanthrene
+  phenanthrene
+  naphthalene
+  
+CHEMCODES = ACENAPTHEN, ANTHRACENE, BIPHENYL, METNAP26_2, FLUORENE, METHNAP_1, METHNAP_2, METPHENAN1, PHENANTHRN, NAPTHALENE
+
+Total high molecular weight PAHs (chemcode = HPAH) were calculated for samples with two or more of the following chemicals reported:  
+  benz(a)anthracene
+  benzo(a)pyrene
+  benzo[e]pyrene
+  chrysene
+  dibenz(a,h)anthracene
+  fluoranthene
+  perylene
+  pyrene
+  
+CHEMCODES = BAA, BAP, BEP, CHRYSENE, BANTH2, FLUORANTHN, PERYLENE, PYRENE
+
+Total PAHs (chemcode = TOTAL_PAH) were calculated as the sum of the LPAH and HPAH chemicals as listed above.
+
+
+=== PCB Sums === 
+PCB sums reported in the source data that could not be identified as being the result of Aroclor, congener, or homolog sums have been assigned the chemcode PCB_SUMR. 
+
+Total of PCB congeners were calculated and assigned the chemcode PCB_SUM_P.  The total is the sum of congeners, with 30 or more congeners reported for each sample.
+
+The congener sum was also reported with the chemcode PCB_SUM.
+
+=== DDT Sums === 
+The sum of paired o,p'/p,p' isomers of DDT and its derivatives reported in the source data  have been assigned chemcodes of DDT_SUMR, DDE_SUMR, and DDD_SUMR.  The sums of all DDT isomers have been assigned the chemcode  DDT_TOTALR.
+
+The sums of the DDT pesticides (DDT_TOTAL) were calculated using a minimum of 4 isomers.  The following pairs were summed when results for both isomers were reported for the sample:  p,p'-DDT and o,p'-DDT (chemcode = DDT_SUM);  p,p'-DDD and o,p'-DDD (chemcode = DDD_SUM);  p,p'-DDE and o,p'-DDE  (chemcode = DDE_SUM).
+
+
+=== Chlordane Sums === 
+Chlordane sums reported in the source data have been assigned the chemcode CHLDN_SUMR.
+
+The sums of Chlordane pesticides (CHLDNE_SUM) were calculated for samples with two or more of the following chemicals reported: alpha-Chlordane, gamma-Chlordane, beta-Chlordane, cis- & trans-Chlordane, Oxychlordane, cis-Nonachlor, and trans-Nonachlor (CHEMCODES = CHLORDAN_A,  CHLORDAN_G, CHLORDAN_B, CHLDNE_C_T, CHLDNE_OXY, NONACL_CIS, NONACHL_TR).
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320004--PR 2016 Hg Study Phase 3
+--------------------------------------------------
+****DATA SOURCE****
+Sources: Penobscot_TED_Export.accdb (original) and Penobscot_TED_Export_121521.mdb (update), compiled by AMEC. 
+
+The following individual task orders, identified in the tech_task_name of the AMEC databases were incorporated into StudyID 04 (PR 2016 Hg Study Phase 3):
+WO 003 : 2016 Mobile Sediment Pool
+WO 004 : 2016 Surface Water
+WO 004 : 2016 Sediment and WQ Monitoring
+WO 005 : 2016 Biota Monitoring
+
+
+****STUDY PURPOSE****
+The purpose of this study is a Court ordered (2003) study of the mercury in the Penobscot River. 
+
+****DATA USE QUALIFICATION****
+Different levels of data validation were reported; these are indicated in the DVLevel field of the database. The validator is unknown.
+
+The following CHEMCODES-UNITS were flagged with an NSR Qualifier (non-standard reporting units) in the QUALCODE field:  MERCURY-mg/L (for sediment matrix).
+
+****DATA TYPES****
+This study includes results for sediment, water, sediment porewater, leachate, tissue and wood chip chemistry.
+
+There are results from this study that are stored in the Lab Results/Field Observation category of DIVER.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude.  Coordinates were included as reported in the source data.  The reliability of the coordinates was not specified.
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.
+
+Some stations provided had null coordinates. These stations were retained in the database and given a lat/long values of 0,0.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the Field ID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates and sample depth information were provided for all samples.  
+
+In instances where the same chemical was measured by two different laboratories for the same STATIONID/SAMPLEID, a Labrep of 2 was assigned to one of the results.
+
+Total and dissolved (filtered) water fractions measured from the same whole water sample are differentiated by adding an F suffix to the SAMPLEID for the dissolved fraction.
+
+There were FDUP samples that did not have a matching parent sample ID and were excluded from the database.
+
+****CHEMISTRY****
+Detection limits were not available for the entire data set.  When possible, the Result value for non-detects reflects the Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead and noted. 
+
+Result values of 0 for non-detects were replaced with the Method Detection Limit.
+
+Results from the updated AMEC database (Penobscot_TED_Export_121521.mdb) included laboratory replicate results that were assigned distinct Sample IDs (e.g., OV-02_052417_SW_10_R1, OV-02_052417_SW_10_R2, OV-02_052417_SW_10_R3) and were associated with an averaged result from the original AMEC database (Penobscot_TED_Export.mdb).  The averaged result was removed from DIVER, the SampleID's were standardized to remove the lab replicate suffix (e.g., OV-02_052417_SW_10), and the LabRep field was used to identify the lab replicates.    
+
+The Sample Quantitation Limit reported in the source data was used to populate the Reporting limit.
+
+From original grain size results reported in terms of sieve size, converted to the equivalent grain size classifications corresponding to the Wentworth scale (e.g. %Fines). Excluded results reported with "Sieve Size #200" and retained "Sieve Size 230" (PCT_FINES), since they are in the same size classification. 
+
+Assumed results reported with Sieve Size were measured in percent passing.
+
+The source data did not have measurement basis reported.  AMEC compiled the database that was used as the source of this data and they indicated that sediment chemistry results are reported on a dry weight basis and tissue chemistry results are reported on a wet weight basis. Given the historical data, there may be some cases where this is not true.  For the DIVER database, it was assumed that all sediment and wood chip chemistry results were reported on a DW basis.
+
+The analyte reported as Percent Solids and Analyical Method D422 or ASTM D2974-C was coded as Water content, based on some results >100. 
+
+The results were reported with two different unit and result combinations in the source data. The Report_Unit and Report_Result fields from the source data were used in the DIVER database. 
+
+Note that some of the entries in Date Analyzed are suspect, as they indicate analysis occurred prior to collection date.
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+=== Grain Size ===
+Results for %silt and %clay were summed to generate records for the chemcode = PCT_FINES.  A sum is only calculated if there are two or more results for %silt and/or %clay.
+
+Percent fines reported in the source data have been assigned chemcode PCT_FINESR.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data for some of the qualifiers. Others were marked as "Not defined".
+
+Laboratory Qualifiers and Final Qualifiers were captured as they were reported in the source database.
+
+****OTHER****
+The modified tech task name is captured in the Project Name field.
+
+Study references added based on reports available at the following site:   
+https://www.penobscotmercurystudy.com/information-repository/phase-iii-engineering-study
+
+
+--------------------------------------------------
+320067--PR Sed & Tissue sampling 2021
+--------------------------------------------------
+****DATA SOURCE****
+Source: Penobscot_TED_Export.accdb, compiled by AMEC.
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+Different levels of data validation were reported; these are indicated in the DVLevel field of the database.
+
+****DATA TYPES****
+This study includes results for tissue and sediment chemistry.
+
+****STATIONS****
+Original station coordinates were provided as NAD83 latitude and longitude (ME_State_NAD1983).  Coordinates were included as reported in the source data.  The reliability of the coordinates was not specified.
+
+Some of the station identifiers in the source data were truncated for inclusion in DIVER.  
+
+The Station identifiers reported in the source data are stored in the ExStnID field.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.  
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.  
+
+Sampling depths were provided for all samples.
+
+****CHEMISTRY****
+Measurement basis was not reported in the source data.  It was assumed that all sediment and soil chemistry results were provided on a DW basis, and all tissue chemistry results were reported on a wet weight basis. 
+
+The value included in the 'SQL_text' field in the source data was used to populate the Reporting Limit field in DIVER.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+Bioassay results were not reported for this study.
+
+****QUALIFIERS****
+Qualifier definitions were not provided; so generic descriptions have been included.
+
+--------------------------------------------------
+320042--PR EGAD Holtrachem Soil 2013
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+****DATA TYPES****
+This study includes results for  soil chemistry.
+
+****STATIONS****
+Station coordinates were not reported in the source data.
+
+The samples were collected at Holtrachem Mfg company. 
+
+The Station identifiers in the source data were truncated for inclusion in DIVER.  The Station identifiers reported in the source data are stored in the ExStnID field.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+Upper and Lower Collection depths were not reported in the source data, and therefore samples are categorized as sub-surface.
+
+This study includes sediment or soil samples analyzed by the chemical labs that are composites from multiple individual samples.   Information about the the individual component samples were not provided in the source data.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead. 
+
+Wet weight-to-dry weight conversions were required for sediment data.
+
+****CALCULATED RESULTS****
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+
+=== PCB Sums === 
+
+Total Aroclors were calculated and assigned the chemcode PCB_SUM_A.  Sums are reported for samples with two or more of the following chemicals reported: Aroclor 1016, Aroclor 1221, Aroclor 1232, Aroclor 1242, Aroclor 1248, Aroclor 1254, Aroclor 1260, Aroclor 1262, Aroclor 1268 (CHEMCODES = AR_1016, AR_1221, AR_1232, AR_1242, AR_1248, AR_1254, AR_1260, AR_1262, AR_1268).  
+
+The Aroclor sum was also reported with the chemcode PCB_SUM.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320059--PR EGAD Holtrachem Sed & Soil 2021
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The data validation indicated on the source data was EPA Tier 2.
+
+****DATA TYPES****
+This study includes results for sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were not reported in the source data.
+
+The samples were collected at Holtrachem Mfg company. 
+
+Some of the station identifiers in the source data were truncated for inclusion in DIVER.  The Station identifiers reported in the source data are stored in the ExStnID field.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320057--PR EGAD Holtrachem Sed & Soil 2019
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The data validation indicated on the source data was EPA Tier 2.
+
+****DATA TYPES****
+This study includes results for sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were not reported in the source data.
+
+The samples were collected at Holtrachem Mfg company. 
+
+Some of the station identifiers in the source data were truncated for inclusion in DIVER.  The Station identifiers reported in the source data are stored in the ExStnID field.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+When only a single sample depth was reported for grab samples, assumed the top depth was 0. Note that in many cases the collection method of Grab does not agree with the depth (e.g., 58 feet).
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320055--PR EGAD Holtrachem Sed & Soil 2017
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The data validation indicated on the source data was EPA Tier 2.
+
+****DATA TYPES****
+This study includes results for sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified. Many stations did not have coordinates reported in the source data. 
+
+Some of the station identifiers in the source data were truncated for inclusion in DIVER.  The Station identifiers reported in the source data are stored in the ExStnID field.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+When only a single sample depth was reported for grab samples, assumed the top depth was 0. Note that in many cases the collection method of Grab does not agree with the depth (e.g., 58 feet).
+
+Collection depths in the source data were reported with upper collection depths that were greater than the lower collection depth.  Results were reported in DIVER as they were reported in the source data.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+There were some samples that measured a suite of mercury fractions (cinnabar fraction, FRACTION GEOLOGICALLY BOUND/BOUND IN SILICA MATRIX, ORGANO-COMPLEXED FRACTION, stomach acid fraction, strongly complexed fraction, volatile elemental fraction, water soluble fraction).  For most of these samples, the sample date/time was reported inconsistently in the source data (unique sample date/time for individual parameters and/or lab replicates).  For these samples, it was assume that the date/time information reported in the source data was in error, and the data/time was adjusted to be consistent for all parameters and lab reps, and consistent with other samples from the core.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320015--PR EGAD Holtrachem Sed, Soil & Tiss 1995
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+When tissue chemistry results were reported on both a dry weight and wet weight basis, the results on a dry weight basis were not included in the database.
+
+****DATA TYPES****
+This study includes results for tissue, sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+Chemical code PCT_FINESR was applied to the reported parameter #200 SIEVE.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320025--PR EGAD Holtrachem Soil 2005
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+****DATA TYPES****
+This study includes results for  soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320019--PR EGAD Holtrachem Soil 1998
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+****DATA TYPES****
+This study includes results for  soil chemistry.
+
+****STATIONS****
+Station coordinates were not reported in the source data. 
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead. 
+
+Wet weight-to-dry weight conversions were required for sediment data.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320061--PR EGAD Holtrachem Soil 1990
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+The source data did not report whether the data was validated.
+
+****DATA TYPES****
+This study includes results for soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.  
+
+Upper and Lower Collection depths were not reported in the source data, and therefore samples are categorized as sub-surface.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead.
+
+****CALCULATED RESULTS****
+The source data did not include any parameters for which to generate sums.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
+--------------------------------------------------
+320047--PR EGAD Holtrachem Sed & Soil 2014
+--------------------------------------------------
+****DATA SOURCE****
+Source: ME DEP Environmental and Geographic Analysis Database (EGAD).
+
+****STUDY PURPOSE****
+The purpose of this study is: not reported
+
+****DATA USE QUALIFICATION****
+For some of the results in this study, the data validation indicated on the source data was DEP REVIEW.   This description has been standardized to DEP the DVLevel field of the chemistry tables.
+
+For some of the results in this study, the data validation indicated on the source data was EPA Tier 2.
+
+****DATA TYPES****
+This study includes results for sediment and soil chemistry.
+
+****STATIONS****
+Station coordinates were provided as latitude and longitude.  Coordinates were included as reported in the source data.  The datum and reliability of the coordinates was not specified.
+
+Station identifiers were included as they were presented in the source data without modification.
+
+****SAMPLES AND REPLICATES****
+The Sample identifiers reported in the source data are stored in the ExSampID field.  The Sample identifiers in the source data were truncated for inclusion in the database.
+
+Field duplicates were given the same SampleID as the paired sample, followed by a 'D' suffix and a sample type code of FDUP. 
+
+Sampling dates were provided for all samples.
+
+When Upper and Lower Collection depths were not reported in the source data, the samples were categorized as sub-surface.
+
+This study includes sediment or soil samples analyzed by the chemical labs that are composites from multiple individual samples.   Information about the the individual component samples were not provided in the source data.
+
+****CHEMISTRY****
+Result values of 0 for non-detects were replaced with the Method Detection Limit.  If the DL was unavailable, the Reporting Limit was used instead. 
+
+Wet weight-to-dry weight conversions were required for sediment data. Soil results with liquid units mg/L or ug/L were assumed to be on a wet weight basis.  When % solids was reported, these results were converted to a dry weight basis. Some results could not be converted to dry weight basis because % moisture or % solids results were not reported.  These results were incorporated in DIVER as is, with NSR (non-standard reporting units) included in the Qualcode field. 
+
+Rejected results are included in the database and not modified;  the associated QUALCODE includes R.
+
+****CALCULATED RESULTS****
+The source data included results for the following calculated totals, which were excluded from the main database: PCBS
+
+=== General Summing Conventions ===
+Where the source data included sums, these values were maintained and coded with a CHEMCODE/Chemical name that indicated these are "reported" results (see specifics below).  Where the appropriate analytes were available, sums were recalculated and qualified with 'CALC' or 'UCALC' followed by a number representing the total number of analytes reported and not rejected (e.g., 'CALC_008').  In the summing procedure, non-detected compounds are treated as zeros (rejected results are excluded).  If all compounds that comprise the total were not detected or the detection limit of any one non-detect compounds is greater than the sum, then the highest non-detect value is reported with a 'UCALC' qualifier (e.g., UCALC_008).  Details regarding the specific compounds included in the sums are provided in the paragraphs below.
+
+
+=== PCB Sums === 
+
+Total Aroclors were calculated and assigned the chemcode PCB_SUM_A.  Sums are reported for samples with two or more of the following chemicals reported: Aroclor 1016, Aroclor 1221, Aroclor 1232, Aroclor 1242, Aroclor 1248, Aroclor 1254, Aroclor 1260, Aroclor 1262, Aroclor 1268 (CHEMCODES = AR_1016, AR_1221, AR_1232, AR_1242, AR_1248, AR_1254, AR_1260, AR_1262, AR_1268).  
+
+The Aroclor sum was also reported with the chemcode PCB_SUM.
+
+****BIOASSAY****
+This study did not include bioassay data.
+
+****QUALIFIERS****
+Qualifiers definitions are provided in the qualifier table.  Definitions were provided with the source data.
+
+When Validation Level was populated, the DV Qualifier was used to populate Final Qualifier.  When Validation Level was not populated, the Laboratory Qualifier was used to populate Final Qualifier.
+
+****OTHER****
+The source data included results for a variety of field observations, which were not incorporated in DIVER.
+
+For some samples, the source data reported collection depths in units of FMP (feet below measuring point) or FGS (FEET BELOW GROUND SURFACE).  Both were treated as 'feet'.
+
+The source data reported the following parameters.  If the parameter name included 'unadjusted' it was reported as 'unadjusted' in DIVER.  If the Parameter name did not include 'unadjusted' then it was reported as 'adjusted' in DIVER.
+C5-C8 ALIPHATIC HYDROCARBONS
+UNADJUSTED C5-C8 ALIPHATICS
+C9-C12 ALIPHATIC HYDROCARBONS
+UNADJUSTED C9-C12 ALIPHATICS
+UNADJUSTED C9-C18 ALIPHATICS
+C19-C36 ALIPHATIC HYDROCARBONS
+UNADJUSTED C19-C36 ALIPHATICS
+UNADJUSTED C9-C10 AROMATICS
+C11-C22 AROMATIC HYDROCARBONS
+UNADJUSTED C11-C22 AROMATICS
+
