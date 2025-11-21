@@ -1,0 +1,79 @@
+---
+title: "Spatial, Temporal, and Depth Distributions of Mercury Contamination in the Penobscot River, Maine"
+author: "Sloane Hauck, Julia Kirkland, Meg O'Brien, and Cira Ortiz"
+output: pdf_document
+toc: true
+lof: true
+lot: true
+geometry: margin=2.54cm
+editor_options: 
+  chunk_output_type: console
+---
+```{r project.setup, results='hide', echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+packages <- c("tidyverse", "readxl", "dplyr", "lubridate", "sp", "sf","mapview",
+              "knitr", "here", "ggplot2", "zoo", "trend")
+
+check.packages <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if(length(new.pkg))
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+}
+check.packages(packages)
+
+'%ni%' <- Negate('%in%')
+
+```
+
+## Background
+
+Enter background text here
+
+## Research Questions and Hypotheses
+
+Enter questions and hypotheses here
+
+## Dataset Information
+
+Summarize where data came from, variables used, etc. 
+
+```{r intro.table.data, echo=FALSE}
+
+DatasetInfo <- data.frame(Item = c("Data Source", "Date Range", 
+                                   "Number of Records ", "Records with Coordinates"),
+                          Value = c("NOAA DIVER", "DATES", 
+                                    "28,058", "24,501"))
+
+knitr::kable(DatasetInfo, align = c('l', 'l'))
+
+```
+
+## Data Wrangling 
+
+Describe what steps are happening in the data wrangling section below
+
+```{r data.wrangling, echo=FALSE}
+
+#Reading in the dataset
+data_raw <- read.csv(here("./Raw Data/DIVER_Penobscot_Mercury_2025_11_18_Samples.csv"))
+
+#Start by subsetting the data to only include columns of interest
+#Then we will flag data that has coordinate information
+data_wrangle_1 <- data_raw %>% 
+  select(Case_Activity, Site_ID, Study_Name, Area_Description, Matrix_Group,
+         Station, Date, Sample_ID, Sample_Upper_Depth, Sample_Lower_Depth,
+         Sample_Depth_Unit, Depth_Category, Lab_Replicate, ChemCode, Max_Result_.Raw.,
+         Analysis_Result_Unit, Start_Latitude, Start_Longitude, 
+         End_Latitude, End_Longitude) %>% 
+  mutate(
+    Coordinate_Flag = case_when(
+      !is.na(Start_Latitude) ~ "Y",
+      is.na(Start_Latitude) & !is.na(End_Latitude) ~ "Y",
+      TRUE ~ "N"),
+    Date = as.Date(Date))
+    
+
+
+
+```
+
