@@ -112,7 +112,8 @@ unique(data_wrangle_2$Analysis_Result_Unit)
 unique(data_wrangle_2$Sample_Depth_Unit)
 
 ```
-Based on above discoveries, we need to spatially limit the samples to the river extent, filter out records with -9 as a result, and filter out mg/L units.
+
+Below data exploration/graphing is very preliminary, could use some additional attention to make the figures look nice.
 
 ```{r data.exploration.figures, echo=FALSE}
 #Plot concentration
@@ -131,6 +132,8 @@ ggplot(data_wrangle_2, aes(x=Date, y=Sample_Upper_Depth, fill=Max_Result_.Raw.))
 mapview(Penobscot) + mapview(data_wrangle_2)
 
 ```
+
+Based on above discoveries, we need to spatially limit the samples to the river extent, filter out records with -9 as a result, and filter out mg/L units.
 
 ## Data Wrangling 
 
