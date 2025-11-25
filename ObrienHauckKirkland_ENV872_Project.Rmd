@@ -52,11 +52,30 @@ knitr::kable(DatasetInfo, align = c('l', 'l'))
 
 ```
 
-## Data Wrangling 
+```{r setup.databases}
 
-Describe what steps are happening in the data wrangling section below
+#Create a point layer of the site coordinates (44.740733, -68.825704)
+Lat <- 44.740733
+Long <- -68.825704
+Name <- "HoltraChem Site"
+Site <- data.frame("Site" = Name, "Longitude" = Long, "Latitude" = Lat) %>% 
+  st_as_sf(coords=c("Longitude", "Latitude"), crs=4269)
 
-```{r data.wrangling, echo=FALSE}
+#Penobscot River shapefile
+Penobscot <- st_read(here("./Shapefiles/Shedriver.shp")) 
+Penobscot <- Penobscot %>% 
+  st_make_valid() %>% 
+  st_transform(crs=4269) %>% 
+  st_union()
+
+
+```
+
+## Data Exploration
+
+Look at what is included in the data and make some initial figures
+
+```{r data.exploration, echo=FALSE}
 
 #Reading in the dataset
 data_raw <- read.csv(here("./Raw Data/DIVER_Penobscot_Mercury_2025_11_18_Samples.csv"))
@@ -95,6 +114,28 @@ unique(data_wrangle_2$Sample_Depth_Unit)
 ```
 Based on above discoveries, we need to spatially limit the samples to the river extent, filter out records with -9 as a result, and filter out mg/L units.
 
+```{r data.exploration.figures, echo=FALSE}
+#Plot concentration
+ggplot(data_wrangle_2, aes(x=Date, y=Max_Result_.Raw.)) +
+  geom_point() +
+  labs(y="Concentration (PPM)")
+
+#Plot Depths and Concentration
+ggplot(data_wrangle_2, aes(x=Date, y=Sample_Upper_Depth, fill=Max_Result_.Raw.)) +
+  geom_point(shape=21) +
+  scale_y_reverse() +
+  labs(y="Depth (cm)", fill="Concentration (PPM)")
+
+
+#Map samples to Penobscot River
+mapview(Penobscot) + mapview(data_wrangle_2)
+
+```
+
+## Data Wrangling 
+
+Describe what steps are happening in the data wrangling section below
+
 ```{r data.cleaning}
 
 #filter out -9 in results and mg/L units
@@ -111,21 +152,8 @@ data_wrangle_3 <- data_wrangle_2 %>%
          Avg_Depth_ft = if_else(Upper_Depth_ft >= 0 & Lower_Depth_ft >= 0,
                                (Upper_Depth_ft+Lower_Depth_ft)/2, -9))
 
-
-#Create a point layer of the site coordinates (44.740733, -68.825704)
-Lat <- 44.740733
-Long <- -68.825704
-Name <- "HoltraChem Site"
-Site <- data.frame("Site" = Name, "Longitude" = Long, "Latitude" = Lat) %>% 
-  st_as_sf(coords = c("Longitude", "Latitude"), crs=4269)
-
 #Intersect the samples with the Penobscot River to ensure we are only looking
 #at samples in our area of interest.
-Penobscot <- st_read(here("./Shapefiles/Shedriver.shp")) 
-Penobscot <- Penobscot %>% 
-  st_make_valid() %>% 
-  st_transform(st_crs(data_wrangle_3)) %>% 
-  st_union()
 
 data_wrangle_4 <- data_wrangle_3 %>% 
   st_filter(Penobscot) 
@@ -133,30 +161,7 @@ data_wrangle_4 <- data_wrangle_3 %>%
 #create a summary table
 
 ```
-## Data Exploration
 
-Make some initial exploratory graphs
-
-```{r data.exploration, echo=FALSE}
-#Plot concentration
-ggplot(data_wrangle_3, aes(x=Date, y=Max_Result_.Raw.)) +
-  geom_point() +
-  labs(y="Concentration (PPM)")
-
-#Plot Depths and Concentration
-ggplot(data_wrangle_3, aes(x=Date, y=Avg_Depth_ft, fill=Max_Result_.Raw.)) +
-  geom_point(shape=21) +
-  scale_y_reverse() +
-  labs(y="Depth (ft)", fill="Concentration (PPM)")
-
-ggplot(data_wrangle_3, aes(x=Max_Result_.Raw.)) +
-  geom_histogram(bins = 30) +
-  xlim(0,10)
-
-#Map samples to Penobscot River
-mapview(Penobscot) + mapview(data_wrangle_3)
-
-```
 
 Sloane 11/24 - leaving off after doing initial data procesing, wrangling, and some visualization. There are a few spots to fill in (summary tables, figures, etc.), but the bulk of the processing/wrangling should be done!
 
