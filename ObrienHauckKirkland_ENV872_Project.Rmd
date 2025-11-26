@@ -52,7 +52,7 @@ knitr::kable(DatasetInfo, align = c('l', 'l'))
 
 ```
 
-```{r setup.databases}
+```{r setup.spatial.databases, echo=FALSE}
 
 #Create a point layer of the site coordinates (44.740733, -68.825704)
 Lat <- 44.740733
@@ -62,12 +62,19 @@ Site <- data.frame("Site" = Name, "Longitude" = Long, "Latitude" = Lat) %>%
   st_as_sf(coords=c("Longitude", "Latitude"), crs=4269)
 
 #Penobscot River shapefile
+#CSH comment: something insane is happening here
 Penobscot <- st_read(here("./Shapefiles/Shedriver.shp")) 
-Penobscot <- Penobscot %>% 
+Penobscot_clean <- Penobscot %>% 
+  filter(!st_is_empty(geometry)) %>% 
+  st_combine() %>% 
   st_make_valid() %>% 
-  st_transform(crs=4269) %>% 
-  st_union()
+  st_transform(crs=4269)
 
+mapview(Penobscot_clean)
+
+ggplot() +
+  geom_sf(data = Penobscot_clean) +
+  geom_sf(data = data_wrangle_2)
 
 ```
 
@@ -79,6 +86,8 @@ Look at what is included in the data and make some initial figures
 
 #Reading in the dataset
 data_raw <- read.csv(here("./Raw Data/DIVER_Penobscot_Mercury_2025_11_18_Samples.csv"))
+
+colnames(data_raw)
 
 #Start by subsetting the data to only include columns of interest
 #Then we will flag data that has coordinate information
@@ -95,7 +104,7 @@ data_wrangle_1 <- data_raw %>%
 #We also make this version of the dataset spatial for future mapping
 data_wrangle_2 <- data_wrangle_1 %>% 
   filter(Coordinate_Flag == "Y") %>% 
-  filter(Start_Latitude < 44.74788) %>% #this is making sure that we only have data points below the site
+  filter(Start_Latitude < 44.74788) %>% #this is making sure that we only have data points downstream of the site
   st_as_sf(coords = c("Start_Longitude", "Start_Latitude"),
            crs = 4269)
 
@@ -110,6 +119,7 @@ unique(data_wrangle_2$Analysis_Result_Unit)
 #valid unit for solids
 
 unique(data_wrangle_2$Sample_Depth_Unit)
+#Some of the data has no, or inconsistent depth data, we will need to come up with an average depth value for further analysis
 
 ```
 
@@ -119,17 +129,20 @@ Below data exploration/graphing is very preliminary, could use some additional a
 #Plot concentration
 ggplot(data_wrangle_2, aes(x=Date, y=Max_Result_.Raw.)) +
   geom_point() +
-  labs(y="Concentration (PPM)")
+  labs(y="Concentration (PPM)") +
+  geom_hline(yintercept = 1.06, color = "red") #this line represents the mercury PEC, above which harmful effects to sediment dwelling biota are likely to be observed.
 
 #Plot Depths and Concentration
 ggplot(data_wrangle_2, aes(x=Date, y=Sample_Upper_Depth, fill=Max_Result_.Raw.)) +
   geom_point(shape=21) +
   scale_y_reverse() +
-  labs(y="Depth (cm)", fill="Concentration (PPM)")
+  labs(y="Depth (cm)", fill="Concentration (PPM)") 
 
 
 #Map samples to Penobscot River
-mapview(Penobscot) + mapview(data_wrangle_2)
+mapview(Penobscot) + mapview(data_wrangle_2, 
+                                                   col.regions = "grey", 
+                                                   alpha.regions = 0.5)
 
 ```
 
